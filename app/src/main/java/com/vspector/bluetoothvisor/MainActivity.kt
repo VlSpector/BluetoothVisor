@@ -143,7 +143,12 @@ class MainActivity : AppCompatActivity(), MainView {
 
                     presenter.onDeviceFound(mac = deviceHardwareAddress)
                 }
-                ACTION_STATE_CHANGED -> presenter.onBluetoothEnabled()
+                ACTION_STATE_CHANGED -> {
+                    val state = intent.extras?.get(EXTRA_STATE)
+                    if (state == STATE_ON) {
+                        presenter.onBluetoothEnabled()
+                    }
+                }
                 ACTION_DISCOVERY_STARTED -> presenter.onStartDiscovery()
 
                 ACTION_DISCOVERY_FINISHED -> presenter.onFinishDiscovery()

@@ -1,7 +1,5 @@
 package com.vspector.bluetoothvisor
 
-import android.util.Log
-
 class MainPresenter(
     private val view: MainView,
     private val devices: MutableList<Device> = mutableListOf()
